@@ -1,0 +1,41 @@
+.form-container {
+  background: rgba(237, 245, 255, 1);
+  #name {
+    width: 75%;
+  }
+
+  #email {
+    width: 85%;
+  }
+
+  #subject {
+    width: 95%;
+  }
+  input {
+    background: rgba(237, 245, 255, 1);
+    &:focus {
+      outline: 0;
+    }
+  }
+  textarea {
+    height: 100px;
+    background: rgba(237, 245, 255, 1);
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+button{
+  width: 150px;
+  height: 40px;
+  background-color: black;
+  color: aliceblue;
+  border-radius: 20px;
+  transition: 1s ease-in-out;
+
+  &:hover{
+    background-color: aliceblue;
+    color: black;
+  }
+}

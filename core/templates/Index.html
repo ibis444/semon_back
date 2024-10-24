@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block main %}
+<main>
+  <!-- Hero Section -->
+  <section id="hero-section" class="position-relative">
+    <div
+      class="hero-text-box position-absolute top-0 left-0 zindex-5 h-100 px-md-5 px-2 d-flex flex-column justify-content-center text-light"
+    >
+      <h3 class="fs-lg-1 fs-4">An Lorem Ipsum</h3>
+      <p class="hero-text-2">
+        Praesent interdum libero eu purus pulvinar, non cursus nulla
+        venenatis. nulla venenatis
+      </p>
+      <div class="d-flex gap-sm-3 gap-1">
+        <a href="{% url 'products:products' %}" class="btn text-dark btn-warning px-0 hero-products-btn">
+          Prod  ucts
+        </a>
+        <a href="{% url 'core:contact' %}" class="btn border text-light px-0 hero-contact-btn">
+          Contact
+        </a>
+      </div>
+    </div>
+    <div class="container-fluid border h-100 hero-box" style="background-image: url('{{ hero_section.image.url }}');"></div>
+
+  </section>
+  <!-- Hero Section -->
+
+  <!-- About Section -->
+  <section>
+    <div class="container">
+      <h2 class="text-center fs-1 my-5">About Us</h2>
+      <div class="row">
+        <div class="col-lg-5 col-12 p-lg-0 d-flex justify-content-center align-items-center">
+          {% if about_home.image %}
+            <img src="{{ about_home.image.url }}" class="w-100" alt="About Us Image" />
+          {% else %}
+            <p>No image available</p>
+          {% endif %}
+        </div>
+        <div class="col-lg-7 col-12 px-lg-5 px-3 order-lg-0 order-first d-flex flex-column justify-content-center">
+          <h3 class="mb-3">{{ about_home.title }}</h3>  <!-- Başlıq buradan gəlir -->
+          <p>{{ about_home.description }}</p>          <!-- Məzmun buradan gəlir -->
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- About Section -->
+
+  <!-- Our Products -->
+  <section id="product-slider" class="my-3">
+    <div class="product-title">
+      <h2 class="text-center fs-1 my-5">Our Products</h2>
+    </div>
+  
+    <div class="swiper product-mySwiper px-4">
+      <div class="swiper-wrapper">
+        {% for product in products %}
+          <div class="swiper-slide rounded-4 overflow-hidden">
+            <div class="single-product-slide h-100 position-relative">
+              <img src="{{ product.image.url }}" alt="{{ product.title }}" />
+              <div class="h-25 main-bg position-absolute bottom-0 w-100 text-light text-start d-flex flex-column justify-content-center p-3">
+                <h4>{{ product.title }}</h4>
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  
+  <!-- Our Products -->
+
+  <!-- Chosen Products -->
+  <section id="chosen-slider">
+    <div class="">
+      <h2 class="text-center fs-1 my-5">Our selected projects</h2>
+    </div>
+    <div class="swiper chosen-mySwiper">
+      <div class="swiper-wrapper">
+        {% for project in projects %}
+        <div class="swiper-slide rounded-4 overflow-hidden">
+          <div class="h-100 position-relative">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="" />
+            <div
+              class="position-absolute bottom-0 left-0 main-bg w-100 text-light p-2"
+            >
+              <h5>{{ project.title }}</h5>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  
+    <div class="py-5 d-flex justify-content-center align-items-center">
+      <a href="" class="btn main-bg text-light more-explore-btn">More Explore</a>
+    </div>
+  </section>
+  
+  
+  <!-- Chosen Products -->
+
+  <!-- Statistics and Projects -->
+
+  <section>
+    <div class="container">
+        <h2 class="text-center fs-1 my-5">Our Projects and Statistics</h2>
+        <div class="row">
+            {% for statistic in statistics %}
+            <div class="col-md-4 col-12 p-2">
+                <div class="border position-relative rounded-4 overflow-hidden single-statistic-box">
+                    <img src="{{ statistic.image.url }}" class="w-100" alt="{{ statistic.description }}" />
+                    <div class="w-100 h-100 position-absolute top-0 left-0 d-flex justify-content-center align-items-center statistic-overlay">
+                        <h3 class="text-warning count" data-count="{{ statistic.count }}">0</h3>
+                    </div>
+                </div>
+                <p class="text-center mt-2" style="font-size: 20px; font-weight: bold; color: black; text-align: center; margin-top: 10px;">{{ statistic.description }}</p> 
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </section>
+  
+
+  <!-- Statistics and Projects -->
+
+  <!-- Our Partners -->
+  <section id="partners" class="customcontainer">
+    <h2 class="text-center fs-1">Our Partners</h2>
+
+    <div class="swiper partners-slider">
+      <div class="swiper-wrapper">
+        {% for partner in partners %}
+        <div class="swiper-slide">
+          <img src="{{ partner.image.url }}" alt="" />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+  <!-- Our Partners -->
+</main>
+
+
+{% endblock main %}
+
+
+    

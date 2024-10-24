@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block main %}
+<main>
+  <section>
+    <div class="container">
+        <h2 class="text-center fs-1 my-5">About Us</h2>
+        <div class="row">
+            <div class="col-lg-5 col-12 p-lg-0 d-flex justify-content-center align-items-center">
+                <img src="{{ about_info.image_1.url }}" class="w-100" alt="{{ about_info.title_1 }}" />
+            </div>
+            <div class="col-lg-7 col-12 px-lg-5 px-3 order-lg-0 order-first d-flex flex-column justify-content-center">
+                <h3 class="mb-3">{{ about_info.title_1 }}</h3>
+                <p>{{ about_info.description_1 }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="text-center fs-1 my-5">Our Service</h2>
+        <div class="row">
+            <div class="col-lg-7 col-12 px-lg-5 px-3 order-lg-0 order-first d-flex flex-column justify-content-center">
+                <h3 class="mb-3">{{ about_info.title_2 }}</h3>
+                <p>{{ about_info.description_2 }}</p>
+            </div>
+            <div class="col-lg-5 col-12 p-lg-0 d-flex justify-content-center align-items-center">
+                <img src="{{ about_info.image_2.url }}" class="w-100" alt="{{ about_info.title_2 }}" />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <section id="about-slider">
+    <div class="container">
+        <div class="about-title">
+            <h2 class="text-center fs-1 my-5">Our Awards and Certificate</h2>
+        </div>
+        <div class="swiper about-mySwiper">
+            <div class="swiper-wrapper">
+              {% for certificate in certificate  %}
+                
+              <div class="swiper-slide">
+                  <img src="{{certificate.image.url}}" alt="">
+              </div>
+              {% endfor %}
+                
+            <div class="swiper-pagination"></div>
+
+
+
+        </div>
+
+
+</section>
+</main>
+
+{% endblock main %}
+  
+   

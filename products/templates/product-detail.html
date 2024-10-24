@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% load static %}
+    {% block main %}
+    <main>
+      <section>
+        <div class="container detail-img">
+          <img
+            src="{{ product.images.first.image.url }}"
+            class="w-100 h-100"
+            alt=""
+          />
+          <h2 class="my-2">{{product.title}}</h2>
+          <h3>{{product.price}} AZN</h3>
+          <p>
+            {{product.description}}  
+          </p>
+        </div>
+      </section>
+      
+      <section id="deteil-slider-section">
+        <div class="deteil-slider-text" style="text-align: center;">
+            <h2>Bunlarada bax</h2>
+        </div>
+        
+
+        <div class="swiper deteil-mySwiper">
+            <div class="swiper-wrapper">
+                {% for item in bunlar %}
+                <div class="swiper-slide">
+                    <img src="{{ item.image.url }}" alt="" />
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+</div>
+</section>
+    </main>
+
+    {% endblock main %}

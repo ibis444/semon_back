@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block main %}
+<main>
+  <section>
+    <div class="container">
+      <h2 class="text-center my-5 fs-1">Contact</h2>
+
+      {% if success_message %}
+        <div class="alert alert-success">
+          {{ success_message }}
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-lg-5 col-12 d-flex flex-column justify-content-center py-lg-0 py-5">
+          <h2 class="fw-bold">Contact Us</h2>
+          <h4>You can easily contact us</h4>
+          <p class="fw-semibold">
+            You can contact us through our social media accounts, our mailing address, and our call center.
+          </p>
+        </div>
+        <div class="col-lg-7 col-12 my-lg-0 my-5">
+          <form method="post" action="{% url 'core:contact' %}"> 
+            {% csrf_token %}
+            <div class="form-container p-sm-5 p-3 rounded-3">
+              <div class="mb-4">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  class="fs-5 border-0 border-bottom border-dark"
+                />
+              </div>
+              <div class="mb-4">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your e-mail"
+                  class="fs-5 border-0 border-bottom border-dark"
+                />
+              </div>
+              <div class="mb-5">
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="Subject"
+                  class="fs-5 border-0 border-bottom border-dark"
+                />
+              </div>
+              <div class="pt-3">
+                <textarea
+                  id="message"  
+                  name="message"
+                  class="w-100 border border-dark p-1"
+                  placeholder="Message"
+                ></textarea>
+              </div>
+              <button class="submit">Gonder</button>
+              
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="container" />
+  <section>
+    <div class="container d-flex flex-md-row flex-column justify-content-between py-5">
+      <div class="left d-flex gap-3 flex-md-row flex-column">
+        <div>
+          <h5>Contact Us</h5>
+          <ul class="p-0 d-flex flex-column gap-2">
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+994512908004" class="nav-link d-inline">+994 51 290 80 04</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:alixankiwiyev@gmail.com" class="nav-link d-inline">alixankiwiyev@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5>Address</h5>
+          <span>
+            <i class="fa-solid fa-location-dot"></i>
+            <a href="#" class="nav-link d-inline">Bakı şəh., Keşlə qəs., 1-ci Öünə</a>
+          </span>
+        </div>
+      </div>
+      <div class="right d-flex justify-content-md-end justify-content-center my-md-0 my-5 gap-3">
+        <a href="#">
+          <i class="fa-brands fa-square-instagram" style="font-size: 40px; color: black;"></i>
+        </a>
+        <a href="#">
+          <i class="fa-brands fa-whatsapp" style="font-size: 40px; color: black;"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d24308.340779751663!2d49.87345474481519!3d40.396829064698984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zQmFrxLEgxZ_JmWguLCBLZcWfbMmZIHHJmXMuMS1jaSDDtm7DvG7JmSBrw7zDp8mZc2kgMTk!5e0!3m2!1saz!2saz!4v1716934058864!5m2!1saz!2saz"
+        width="100%"
+        height="500"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+</main>
+{% endblock main %}
