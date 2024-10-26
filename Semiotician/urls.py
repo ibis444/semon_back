@@ -8,14 +8,12 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+   
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+i18n_patterns(
     path('', views.home, name='home'),  
-    path('i18n/', include('django.conf.urls.i18n')),
     path('core/', include('core.urls')),  
     path('products/', include('products.urls')),  
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += i18n_patterns(
-    path('', views.home, name='home'),  
-     path('core/', include('core.urls')),  
-    path('products/', include('products.urls')),  
+    path('i18n/', include('django.conf.urls.i18n')), 
 )
+
+    

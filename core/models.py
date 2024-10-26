@@ -7,7 +7,7 @@ class HeroSection(models.Model):
     
 class AboutHomePage(models.Model):
     image = models.ImageField(upload_to='about_home/')
-    title = models.CharField(max_length=200)  # Başlıq üçün sahə
+    title = models.CharField(max_length=200) 
     description = models.TextField()    
     def __str__(self):
         return self.title 

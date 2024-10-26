@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n  %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,21 +54,22 @@
           <div
             class="col-md-3 col-9 d-flex justify-content-end align-items-center"
           >
-            <select class="bg-dark text-light rounded p-1 d-md-block d-none">
-              <option>AZ</option>
-              <option>EN</option>
-              <option>RU</option>
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                            selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
             </select>
-            <button
-              class="btn d-md-none d-block w-25 p-0"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasTop"
-              aria-controls="offcanvasTop"
-            >
-              <i class="fa-solid fa-bars fs-4"></i>
-            </button>
-
+            <input type="submit" value="Go">
+        </form>
+        
             <div
               class="offcanvas offcanvas-top d-md-none d-block"
               style="height: 100vh"
